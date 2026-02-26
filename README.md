@@ -18,7 +18,7 @@ Kullanıcı kayıt/giriş sistemi, kategori yönetimi, alt görevler ve üye ata
 - React Beautiful DnD (sürükle-bırak)
 
 
-##✨ Özellikler
+## ✨ Özellikler
 
 - 🔐 Kullanıcı kaydı ve girişi (JWT tabanlı)
 - 📧 E-posta doğrulama (kayıt sonrası mail onayı)
