@@ -1,6 +1,12 @@
+[🇹🇷 Türkçe](#türkçe) | [🇬🇧 English](#english)
+
+---
+
+# Türkçe
+
 # 📝 Todo App
 
-Proje tabanlı görev takip uygulaması. Kullanıcılar proje oluşturabilir, takım arkadaşlarını davet edebilir ve görevleri birlikte yönetebilir.
+Kullanıcı kayıt/giriş sistemi, kategori yönetimi, alt görevler ve üye atama özelliklerine sahip full-stack bir görev takip uygulaması.
 
 ---
 
@@ -15,9 +21,7 @@ Proje tabanlı görev takip uygulaması. Kullanıcılar proje oluşturabilir, ta
 - Mailtrap (e-posta doğrulama)
 
 **Frontend**
-- Next.js 14 (App Router)
-- TypeScript
-- Tailwind CSS
+- React + TypeScript
 - Axios
 - React Beautiful DnD (sürükle-bırak)
 
@@ -25,28 +29,16 @@ Proje tabanlı görev takip uygulaması. Kullanıcılar proje oluşturabilir, ta
 
 ## ✨ Özellikler
 
-### 🔐 Kimlik Doğrulama
-- Kullanıcı kaydı ve girişi (JWT tabanlı)
-- E-posta doğrulama (kayıt sonrası mail onayı)
-- Profil avatarı
-
-### 📁 Proje Yönetimi
-- Proje oluşturma ve silme
-- Proje arşivleme / arşivden çıkarma
-- Üye davet sistemi (e-posta veya kullanıcı adıyla)
-- Davet kabul / red etme
-- Rol sistemi: **Leader** ve **Member**
-- Üye çıkarma (göreve atanmış üye koruması)
-
-### ✅ Görev Yönetimi
-- Görev oluşturma, silme ve tamamlama
-- Birden fazla üyeye görev atama
-- Alt görev (SubTask) desteği
-- Alt görevlere üye atama
-- Öncelik seviyesi (Priority)
-- Son tarih (Due Date)
-- Kategori filtreleme
+- 🔐 Kullanıcı kaydı ve girişi (JWT tabanlı)
+- 📧 E-posta doğrulama (kayıt sonrası mail onayı)
+- ✅ Görev oluşturma, silme ve tamamlama
+- 📋 Alt görev (SubTask) desteği
+- 👤 Alt görevlere üye atama
+- 🗂️ Kategori oluşturma ve filtreleme
+- 🔢 Öncelik seviyesi (Priority)
+- 📅 Son tarih (Due Date) belirleme
 - ↕️ Sürükle-bırak ile görev sıralama
+- 🔍 Filtreleme ve toolbar araçları
 
 ---
 
@@ -57,40 +49,31 @@ Proje tabanlı görev takip uygulaması. Kullanıcılar proje oluşturabilir, ta
 - [Node.js](https://nodejs.org/) (v18+)
 - [PostgreSQL](https://www.postgresql.org/)
 
----
-
 ### 1. Veritabanı
 
-PostgreSQL'de bir veritabanı oluştur:
 ```sql
 CREATE DATABASE TodoBasicDb;
 ```
 
----
-
 ### 2. Backend
 
 ```bash
-cd backend/TodoApp.Backend/TodoApp.Backend
+cd backend
 ```
 
-`appsettings.json` içindeki bağlantı bilgilerini güncelle:
+`appsettings.json` içindeki bağlantı dizesini güncelle:
 ```json
 "ConnectionStrings": {
   "DefaultConnection": "Host=localhost;Database=TodoBasicDb;Username=postgres;Password=SIFREN"
 }
 ```
 
-Migration'ları uygula ve başlat:
 ```bash
 dotnet ef database update
 dotnet run --launch-profile http
 ```
 
-Backend `http://localhost:5121` adresinde çalışır.  
-Swagger UI: `http://localhost:5121/swagger`
-
----
+Backend: `http://localhost:5121` | Swagger: `http://localhost:5121/swagger`
 
 ### 3. Frontend
 
@@ -100,7 +83,7 @@ npm install
 npm run dev
 ```
 
-Frontend `http://localhost:3000` adresinde çalışır.
+Frontend: `http://localhost:5173`
 
 ---
 
@@ -113,21 +96,6 @@ Frontend `http://localhost:3000` adresinde çalışır.
 | GET | `/api/Auth/verify-email?token=` | E-posta doğrula |
 | POST | `/api/Auth/login` | Giriş yap |
 | GET | `/api/Auth/me` | Oturum bilgisi |
-
-### Project
-| Method | Endpoint | Açıklama |
-|--------|----------|----------|
-| GET | `/api/Project` | Projeleri listele |
-| POST | `/api/Project` | Proje oluştur |
-| DELETE | `/api/Project/{id}` | Proje sil |
-| PATCH | `/api/Project/{id}/archive` | Arşivle |
-| PATCH | `/api/Project/{id}/unarchive` | Arşivden çıkar |
-| POST | `/api/Project/{id}/invite` | Üye davet et |
-| GET | `/api/Project/invitations` | Bekleyen davetler |
-| POST | `/api/Project/{id}/invitations/accept` | Daveti kabul et |
-| POST | `/api/Project/{id}/invitations/reject` | Daveti reddet |
-| GET | `/api/Project/{id}/members` | Üyeleri listele |
-| DELETE | `/api/Project/{id}/members/{userId}` | Üyeyi çıkar |
 
 ### Todo
 | Method | Endpoint | Açıklama |
@@ -148,59 +116,114 @@ Frontend `http://localhost:3000` adresinde çalışır.
 
 ---
 
-## 📁 Proje Yapısı
+# English
 
+# 📝 Todo App
+
+A full-stack task tracking application with user authentication, category management, subtasks and member assignment features.
+
+---
+
+## 🚀 Technologies
+
+**Backend**
+- .NET 8 (ASP.NET Core Web API)
+- Entity Framework Core
+- PostgreSQL
+- JWT Authentication
+- BCrypt password hashing
+- Mailtrap (email verification)
+
+**Frontend**
+- React + TypeScript
+- Axios
+- React Beautiful DnD (drag & drop)
+
+---
+
+## ✨ Features
+
+- 🔐 User registration and login (JWT-based)
+- 📧 Email verification (confirmation mail after registration)
+- ✅ Create, delete and complete tasks
+- 📋 SubTask support
+- 👤 Assign members to subtasks
+- 🗂️ Category creation and filtering
+- 🔢 Priority levels
+- 📅 Due date support
+- ↕️ Drag & drop task reordering
+- 🔍 Filtering and toolbar tools
+
+---
+
+## ⚙️ Setup
+
+### Requirements
+- [.NET 8 SDK](https://dotnet.microsoft.com/download)
+- [Node.js](https://nodejs.org/) (v18+)
+- [PostgreSQL](https://www.postgresql.org/)
+
+### 1. Database
+
+```sql
+CREATE DATABASE TodoBasicDb;
 ```
-├── backend/
-│   └── TodoApp.Backend/
-│       └── TodoApp.Backend/
-│           ├── Controllers/
-│           │   ├── AuthController.cs
-│           │   ├── ProjectController.cs
-│           │   ├── TodoController.cs
-│           │   └── CategoryController.cs
-│           ├── Entities/
-│           │   ├── User.cs
-│           │   ├── Project.cs
-│           │   ├── ProjectMember.cs
-│           │   ├── Todo.cs
-│           │   ├── SubTask.cs
-│           │   ├── Category.cs
-│           │   └── Enums.cs
-│           ├── DTOs/
-│           ├── Services/
-│           │   └── EmailService.cs
-│           ├── Data/
-│           │   └── AppDbContext.cs
-│           ├── Migrations/
-│           ├── appsettings.json
-│           └── Program.cs
-│
-└── frontend/
-    └── src/
-        ├── app/
-        │   ├── page.tsx
-        │   ├── login/
-        │   ├── register/
-        │   └── verify-email/
-        ├── components/
-        │   ├── Sidebar.tsx
-        │   ├── AddTodoForm.tsx
-        │   ├── TodoItem.tsx
-        │   ├── TodoHeader.tsx
-        │   ├── TodoToolbar.tsx
-        │   ├── FilterPopup.tsx
-        │   ├── SubTaskModal.tsx
-        │   ├── InviteMemberModal.tsx
-        │   ├── NewProjectModal.tsx
-        │   ├── AvatarModal.tsx
-        │   └── modals/
-        ├── hooks/
-        │   ├── useProjects.ts
-        │   ├── useTodos.ts
-        │   ├── useMembers.ts
-        │   └── useFilters.ts
-        └── lib/
-            ├── api.ts
-            └── utils.ts
+
+### 2. Backend
+
+```bash
+cd backend
 ```
+
+Update the connection string in `appsettings.json`:
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Host=localhost;Database=TodoBasicDb;Username=postgres;Password=YOUR_PASSWORD"
+}
+```
+
+```bash
+dotnet ef database update
+dotnet run --launch-profile http
+```
+
+Backend: `http://localhost:5121` | Swagger: `http://localhost:5121/swagger`
+
+### 3. Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend: `http://localhost:5173`
+
+---
+
+## 📡 API Endpoints
+
+### Auth
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/Auth/register` | Register |
+| GET | `/api/Auth/verify-email?token=` | Verify email |
+| POST | `/api/Auth/login` | Login |
+| GET | `/api/Auth/me` | Get current user |
+
+### Todo
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/Todo` | List todos |
+| POST | `/api/Todo` | Create todo |
+| DELETE | `/api/Todo/{id}` | Delete todo |
+| PUT | `/api/Todo/{id}/toggle` | Toggle complete |
+| PUT | `/api/Todo/reorder` | Reorder todos |
+| POST | `/api/Todo/{id}/subtask` | Add subtask |
+| PUT | `/api/Todo/subtask/{id}/toggle` | Toggle subtask |
+
+### Category
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/Category` | List categories |
+| POST | `/api/Category` | Create category |
